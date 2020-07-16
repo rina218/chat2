@@ -23,15 +23,16 @@ form.addEventListener('submit', function(event){
 socketio.on('message',function(msg){
   const obj = JSON.parse(msg);
 
-  const dt = document.createElement("dt");
-  const dd = document.createElement("dd");
-  dt.append(obj.name);
-  chats.append(dt);
-  dd.append(obj.msg);
-  chats.append(dd);
-  dd2.append(formatDate(new Date(msg.date), 'yyyy/MM/dd HH:mm:ss'));
-  chats.append(dd2);
-}
+  function displayMessage(msg){
+    const dt = document.createElement("dt");
+    const dd = document.createElement("dd");
+    const dd2 = document.createElement("dd");
+    dt.append(msg.name);
+    chats.append(dt);
+    dd.append(msg.msg);
+    chats.append(dd);
+    dd2.append(formatDate(new Date(msg.date), 'yyyy/MM/dd HH:mm:ss'));
+    chats.append(dd2);
 
 function formatDate (date, format) {
   format = format.replace(/yyyy/g, date.getFullYear());
