@@ -30,7 +30,8 @@ socketio.on('message',function(msg){
   dd.append(obj.msg);
   chats.append(dd);
   dd2.append(formatDate(new Date(msg.date), 'yyyy/MM/dd HH:mm:ss'));
-});
+  chats.append(dd2);
+}
 
 function formatDate (date, format) {
   format = format.replace(/yyyy/g, date.getFullYear());
